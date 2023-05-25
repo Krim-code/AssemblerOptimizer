@@ -14,25 +14,14 @@
 	.p2align	4, 0x90
 main:
 .seh_proc main
-	subq	$56, %rsp
-	.seh_stackalloc 56
+	pushq	%rax
+	.seh_stackalloc 8
 	.seh_endprologue
-	movl	$0, 44(%rsp)
-	movabsq	$4612811918334230528, %rax
-	movq	%rax, 48(%rsp)
-	movl	$2, 40(%rsp)
-	leaq	fstr7472(%rip), %rcx
-	movl	$2, %edx
-	callq	printf
-	movl	$1, %eax
-	addq	$56, %rsp
+	movl	$2, 4(%rsp)
+	xorl	%eax, %eax
+	popq	%rcx
 	retq
 	.seh_handlerdata
 	.text
 	.seh_endproc
 
-	.section	.rdata,"dr"
-fstr7472:
-	.asciz	"%i \n"
-
-	.globl	_fltused
